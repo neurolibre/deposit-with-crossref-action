@@ -1,4 +1,4 @@
-# Open Journals :: Deposit with Crossref
+# NeuroLibre :: Deposit with Crossref
 
 This action deposit an accepted paper with [Crossref](https://www.crossref.org/)
 
