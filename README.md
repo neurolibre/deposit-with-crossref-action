@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deposit with Crossref
-        uses: xuanxu/deposit-with-crossref-action@main
+        uses: neurolibre/deposit-with-crossref-action@main
         with:
           crossref_filepath: ./paper.crossref.xml
           crossref_username: ${{ secrets.CROSSREF_USER }}
