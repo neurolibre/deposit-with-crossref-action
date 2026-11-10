@@ -14,6 +14,13 @@ inputs:
     description: Use test or production crossref calls
     required: false
     default: ""
+  crossref_operation:
+    description: >-
+      Crossref deposit operation. Leave empty for a full metadata deposit
+      (Crossref's default, doMDUpload). Use doDOICitUpload for a resource-only
+      deposit, e.g. adding relations to an existing DOI.
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -33,6 +40,7 @@ runs:
         CROSSREF_USERNAME: ${{ inputs.crossref_username }}
         CROSSREF_PASSWORD: ${{ inputs.crossref_password }}
         CROSSREF_MODE: ${{ inputs.crossref_mode }}
+        CROSSREF_OPERATION: ${{ inputs.crossref_operation }}
         BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
         bundle exec ruby ${{ github.action_path }}/deposit_with_crossref.rb

@@ -13,6 +13,8 @@ The action requires the following inputs:
 - **crossref_filepath**: Required. The complete filepath of the Crossref XML file
 - **crossref_username**: Required. Crossref username doing the deposit
 - **crossref_password**: Required. Crossref password
+- **crossref_mode**: Optional. Set to `test` to deposit to `test.crossref.org` instead of production.
+- **crossref_operation**: Optional. Empty by default, which is a full metadata deposit (Crossref's `doMDUpload`). Set to `doDOICitUpload` for a resource-only deposit, for example to add an `isPreprintOf` relation to a DOI that is already registered.
 
 ### Example
 
