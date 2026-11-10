@@ -5,6 +5,7 @@ crossref_filepath = ENV['CROSSREF_FILEPATH']
 crossref_username = ENV['CROSSREF_USERNAME']
 crossref_password = ENV['CROSSREF_PASSWORD']
 mode = ENV['CROSSREF_MODE']
+operation = ENV['CROSSREF_OPERATION'].to_s.strip
 
 crossref_url = "https://doi.crossref.org"
 crossref_path = "/servlet/deposit"
@@ -19,6 +20,9 @@ if File.exist?(crossref_filepath)
   end
 
   payload = params
+  # Only send `operation` when one is given, so a full metadata deposit posts
+  # exactly the same form as before this input existed.
+  payload[:operation] = operation unless operation.empty?
   payload[:fname] = Faraday::FilePart.new(File.new(crossref_filepath, 'rb'), "application/xml")
 
   deposit_call = conn.post(crossref_path, payload)
